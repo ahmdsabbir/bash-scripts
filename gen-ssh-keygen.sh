@@ -10,8 +10,8 @@ remote_username="$2"
 remote_ip_address="$3"
 
 # Use arguments to create an SSH key pair
-ssh-keygen -f "/home/$home_username/.ssh/id_rsa.pub"
+ssh-keygen -f "/home/$home_username/.ssh/id_rsa"
 
-ssh-copy-id -i ~/.ssh/id_rsa.pub "$remote_username@$remote_ip_address"
+ssh-copy-id -i /home/$home_username/.ssh/id_rsa "$remote_username@$remote_ip_address"
 
-echo "SSH key pair created for $username on $ip_address"
+echo "SSH key pair created for $remote_username on $remote_ip_address"
