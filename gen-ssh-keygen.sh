@@ -18,16 +18,13 @@ ssh-copy-id -i /home/$home_username/.ssh/id_rsa "$remote_username@$remote_ip_add
 echo "SSH key pair created for $remote_username on $remote_ip_address"
 
 if [ -n "$alias" ]; then
-    
-    if [ -n "$shell" = "zsh" ]; then
+    if [ -n "$shell" ] && [ "$shell" = "zsh" ]; then
         echo "Setting alias in Zsh configuration file"
         echo "alias $alias='ssh $remote_username@$remote_ip_address'" >> "/home/$home_username/.zshrc"
     else
         echo "Setting alias in Bash configuration file"
         echo "alias $alias='ssh $remote_username@$remote_ip_address'" >> "/home/$home_username/.bashrc"
     fi
-    
+
     echo "Alias set: $alias"
 fi
-
-
