@@ -8,7 +8,6 @@ fi
 home_username="$1"
 remote_username="$2"
 remote_ip_address="$3"
-password="$4"
 
 # Use arguments to create an SSH key pair
 ssh-keygen -f "/home/$home_username/.ssh/id_rsa.pub"
