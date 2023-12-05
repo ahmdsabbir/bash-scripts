@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ "$#" -ne 4 ]; then
-    echo "Usage: $0 home_username remote_username ip_address password"
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 home_username remote_username ip_address"
     exit 1
 fi
 
