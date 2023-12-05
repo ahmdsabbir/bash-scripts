@@ -7,10 +7,12 @@ fi
 
 home_username="$1"
 remote_username="$2"
-ip_address="$3"
+remote_ip_address="$3"
 password="$4"
 
 # Use arguments to create an SSH key pair
-ssh-keygen -t rsa -b 2048 -N "$password" -C "$remote_username@$ip_address" -f "/home/$home_username/.ssh/id_rsa.pub"
+ssh-keygen -f "/home/$home_username/.ssh/id_rsa.pub"
+
+ssh-copy-id -i ~/.ssh/id_rsa.pub "$remote_username@$remote_ip_address"
 
 echo "SSH key pair created for $username on $ip_address"
