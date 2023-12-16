@@ -11,7 +11,11 @@ remote_ip_address="$3"
 alias="$4"
 shell="$5"
 
-ssh-keygen -f "/home/$home_username/.ssh/id_rsa"
+if [ -f "/home/$home_username/.ssh/id_rsa.pub" ]; then
+    echo "SSH key pair already exists"
+else
+    ssh-keygen -f "/home/$home_username/.ssh/id_rsa"
+fi
 
 ssh-copy-id -i /home/$home_username/.ssh/id_rsa "$remote_username@$remote_ip_address"
 
@@ -21,7 +25,6 @@ if [ -n "$alias" ]; then
     if [ -n "$shell" ] && [ "$shell" = "zsh" ]; then
         echo "Setting alias in Zsh configuration file"
         echo "alias $alias='ssh $remote_username@$remote_ip_address'" >> "/home/$home_username/.zshrc"
-        source /home/$home_username/.zshrc
     else
         echo "Setting alias in Bash configuration file"
         echo "alias $alias='ssh $remote_username@$remote_ip_address'" >> "/home/$home_username/.bashrc"
