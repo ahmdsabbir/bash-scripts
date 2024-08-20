@@ -21,3 +21,9 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 # confirm that docker is installed
 
 docker --v
+
+sudo usermod -a -G docker $USER
+
+grep docker /etc/group
+
+newgrp docker
